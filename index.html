@@ -1,605 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Manohar Pattanayak | AI Security Architect</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --border: #1f1f1f;
-    --accent: #00ff9d;
-    --accent2: #ff3d6b;
-    --accent3: #3d9eff;
-    --text: #e8e8e8;
-    --muted: #666;
-    --mono: 'Space Mono', monospace;
-    --sans: 'Syne', sans-serif;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manohar Pattanayak — AI & Solution Security Architect specializing in AI Security, Cloud Security, Application Security, Threat Modeling, and Security Architecture Reviews.">
+    <title>Manohar Pattanayak | AI & Solution Security Architect</title>
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.08em; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-  .nav-links a { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-linkedin {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    font-family: var(--mono); font-size: 0.72rem;
-    color: var(--accent3); text-decoration: none;
-    border: 1px solid rgba(61,158,255,0.3);
-    padding: 0.3rem 0.75rem; border-radius: 2px;
-    transition: all 0.2s;
-  }
-  .nav-linkedin:hover { background: rgba(61,158,255,0.1); color: var(--accent3); border-color: var(--accent3); }
+    <style>
+        :root {
+            --accent: #4f7cff;
+            --accent-dark: #2952d6;
+            --bg: #eef1f6;
+            --card-bg: #ffffff;
+            --text: #1f2933;
+            --text-soft: #52606d;
+            --radius: 16px;
+            --shadow: 0 10px 30px rgba(31, 41, 51, 0.08);
+            --shadow-hover: 0 18px 45px rgba(79, 124, 255, 0.18);
+        }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    padding: 8rem 3rem 4rem; position: relative; overflow: hidden;
-  }
-  .hero-grid {
-    position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(0,255,157,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,157,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: gridShift 20s linear infinite;
-  }
-  @keyframes gridShift { from { transform: translateY(0); } to { transform: translateY(60px); } }
-  .hero-glow {
-    position: absolute; width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(0,255,157,0.08) 0%, transparent 70%);
-    top: 10%; right: -100px; border-radius: 50%;
-    animation: pulse 6s ease-in-out infinite;
-  }
-  @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.1); opacity: 1; } }
-  .hero-content { position: relative; z-index: 1; max-width: 760px; }
-  .hero-tag { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.2s; }
-  .hero-title { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.4s; }
-  .hero-title .highlight { color: var(--accent); }
-  .hero-title .highlight2 { color: var(--accent2); }
-  .hero-subtitle { font-size: 1.1rem; color: var(--muted); max-width: 560px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.6s; }
-  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.6s ease forwards 0.8s; }
+        * {
+            box-sizing: border-box;
+        }
 
-  .btn-custom {
-    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em;
-    padding: 0.75rem 1.8rem; border-radius: 3px; cursor: pointer;
-    text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
-  }
-  .btn-primary-custom { background: var(--accent); color: #000; border: 1px solid var(--accent); font-weight: 700; }
-  .btn-primary-custom:hover { background: transparent; color: var(--accent); }
-  .btn-outline-custom { background: transparent; color: var(--text); border: 1px solid var(--border); }
-  .btn-outline-custom:hover { border-color: var(--accent); color: var(--accent); }
-  .btn-linkedin-custom { background: transparent; color: var(--accent3); border: 1px solid rgba(61,158,255,0.4); }
-  .btn-linkedin-custom:hover { background: rgba(61,158,255,0.1); border-color: var(--accent3); }
-  .btn-resume-custom { background: transparent; color: #ffc800; border: 1px solid rgba(255,200,0,0.4); }
-  .btn-resume-custom:hover { background: rgba(255,200,0,0.08); border-color: #ffc800; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
 
-  /* TICKER */
-  .ticker { background: var(--accent); color: #000; font-family: var(--mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.6rem 0; overflow: hidden; white-space: nowrap; }
-  .ticker-inner { display: inline-block; animation: ticker 25s linear infinite; }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .container {
+            max-width: 920px;
+            margin: auto;
+            padding: 0 20px 60px;
+        }
 
-  /* SECTIONS */
-  section { padding: 5rem 3rem; position: relative; z-index: 1; }
-  .container-custom { max-width: 900px; margin: 0 auto; }
-  .section-label { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.6rem; }
-  .section-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 3rem; }
+        /* ---------- Hero ---------- */
+        header {
+            position: relative;
+            text-align: center;
+            padding: 90px 20px 110px;
+            background: linear-gradient(135deg, #2952d6 0%, #4f7cff 45%, #7b9bff 100%);
+            color: #fff;
+            overflow: hidden;
+        }
 
-  /* POSTS GRID */
-  .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5px; background: var(--border); border: 1px solid var(--border); }
-  .post-card { background: var(--surface); padding: 2rem; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: background 0.25s; cursor: pointer; }
-  .post-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--accent); transition: height 0.3s ease; }
-  .post-card:hover::before { height: 100%; }
-  .post-card:hover { background: #161616; }
-  .post-tag { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 2px; display: inline-block; margin-bottom: 1rem; font-weight: 700; }
-  .tag-ai { background: rgba(0,255,157,0.12); color: var(--accent); }
-  .tag-cloud { background: rgba(61,158,255,0.12); color: var(--accent3); }
-  .tag-appsec { background: rgba(255,61,107,0.12); color: var(--accent2); }
-  .tag-threat { background: rgba(255,200,0,0.12); color: #ffc800; }
-  .post-title { font-size: 1.1rem; font-weight: 800; line-height: 1.3; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
-  .post-excerpt { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
-  .post-meta { display: flex; align-items: center; gap: 1rem; font-family: var(--mono); font-size: 0.68rem; color: #444; }
-  .post-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 2.5rem; }
-  .featured-content { display: flex; flex-direction: column; justify-content: center; }
-  .featured-visual { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(0,255,157,0.05), rgba(0,255,157,0.01)); border: 1px solid rgba(0,255,157,0.1); border-radius: 4px; font-size: 5rem; min-height: 180px; }
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18), transparent 40%),
+                        radial-gradient(circle at 80% 60%, rgba(255,255,255,0.12), transparent 45%);
+            pointer-events: none;
+        }
 
-  /* ARTICLE OVERLAY */
-  .article-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); overflow-y: auto; padding: 2rem; }
-  .article-overlay.open { display: block; }
-  .article-inner { max-width: 720px; margin: 4rem auto; background: var(--surface); border: 1px solid var(--border); padding: 3rem; position: relative; }
-  .article-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 1px solid var(--border); color: var(--muted); cursor: pointer; font-family: var(--mono); font-size: 0.75rem; padding: 0.4rem 0.8rem; transition: all 0.2s; }
-  .article-close:hover { border-color: var(--accent2); color: var(--accent2); }
-  .article-tag { margin-bottom: 1rem; }
-  .article-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
-  .article-meta { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-  .article-body h2 { font-size: 1.2rem; font-weight: 800; margin: 2rem 0 0.75rem; color: var(--text); }
-  .article-body h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: var(--accent); font-family: var(--mono); }
-  .article-body p { font-size: 0.92rem; color: #aaa; margin-bottom: 1rem; line-height: 1.75; }
-  .article-body ul { margin: 0.5rem 0 1rem 1.2rem; }
-  .article-body ul li { font-size: 0.9rem; color: #aaa; margin-bottom: 0.4rem; line-height: 1.65; }
-  .article-body code { font-family: var(--mono); background: #1a1a1a; border: 1px solid var(--border); padding: 0.1rem 0.4rem; border-radius: 2px; font-size: 0.82rem; color: var(--accent); }
-  .callout { border-left: 3px solid var(--accent); background: rgba(0,255,157,0.04); padding: 1rem 1.25rem; margin: 1.5rem 0; font-size: 0.88rem; color: #aaa; }
-  .callout strong { color: var(--accent); }
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+            display: block;
+        }
 
-  /* ABOUT */
-  .about-strip { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; padding: 4rem 3rem; }
-  .about-name { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
-  .about-name span { color: var(--accent); }
-  .about-role { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; margin-top: 0.5rem; }
-  .about-text { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
-  .tags-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
-  .skill-tag { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; padding: 0.25rem 0.6rem; border: 1px solid var(--border); color: var(--muted); border-radius: 2px; }
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
 
-  /* CONNECT SECTION */
-  .connect-section { background: var(--bg); border-top: 1px solid var(--border); }
-  .connect-inner { max-width: 900px; margin: 0 auto; padding: 4rem 3rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-  .connect-text h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; }
-  .connect-text p { font-size: 0.9rem; color: var(--muted); }
-  .connect-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+        header p {
+            font-size: 1.15rem;
+            opacity: 0.92;
+            margin: 0 0 24px;
+            position: relative;
+            z-index: 1;
+        }
 
-  /* FOOTER */
-  footer { padding: 2.5rem 3rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; font-family: var(--mono); font-size: 0.7rem; color: #333; }
-  footer a { color: #444; text-decoration: none; transition: color 0.2s; }
-  footer a:hover { color: var(--accent); }
-  .footer-social { display: flex; gap: 1.5rem; align-items: center; }
-  .footer-linkedin { color: var(--accent3) !important; }
-  .footer-linkedin:hover { color: var(--accent3) !important; opacity: 0.8; }
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
 
-  @media (max-width: 700px) {
-    nav { padding: 1rem 1.25rem; }
-    .nav-links { display: none; }
-    section { padding: 3.5rem 1.25rem; }
-    .hero { padding: 7rem 1.25rem 3rem; }
-    .post-card.featured { grid-column: auto; grid-template-columns: 1fr; }
-    .featured-visual { display: none; }
-    .about-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.25rem; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-    .article-inner { padding: 2rem 1.25rem; margin: 2rem auto; }
-    .connect-inner { flex-direction: column; text-align: center; }
-  }
-</style>
+        .badge {
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ---------- Cards ---------- */
+        .card {
+            background: var(--card-bg);
+            padding: 30px 32px;
+            margin-top: 26px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(31, 41, 51, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:first-of-type {
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0 14px;
+            color: var(--text);
+        }
+
+        .card h2 .icon {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        .card h2::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            border-radius: 2px;
+        }
+
+        .card p {
+            color: var(--text-soft);
+            margin: 0;
+        }
+
+        /* ---------- Feature lists ---------- */
+        ul.features {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        ul.features li {
+            background: #f4f7ff;
+            border: 1px solid #e2e9ff;
+            border-left: 4px solid var(--accent);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-weight: 500;
+            color: var(--text);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        ul.features li:hover {
+            background: #e8efff;
+            transform: translateX(4px);
+        }
+
+        /* ---------- Contact ---------- */
+        .contact-grid {
+            display: grid;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .contact-grid a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+            width: fit-content;
+            transition: color 0.2s ease;
+        }
+
+        .contact-grid a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .contact-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .contact-role {
+            color: var(--text-soft);
+            margin-bottom: 14px;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 34px 20px;
+            background: #1f2933;
+            color: #cbd2d9;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--accent);
+        }
+
+        /* ---------- Reveal animation ---------- */
+        .card {
+            animation: rise 0.6s ease both;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">MP // AI SEC ARCHITECT</div>
-  <ul class="nav-links">
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="mailto:manoharpattanayak03@gmail.com">Contact</a></li>
-    <li>
-      <a href="https://www.linkedin.com/in/manohar-pattanayak/" target="_blank" rel="noopener" class="nav-linkedin">
-        <i class="bi bi-linkedin"></i> LinkedIn
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="hero-tag">// Security Architecture &amp; AI Risk</div>
-    <h1 class="hero-title">
-      Breaking down<br>
-      <span class="highlight">AI Security</span> &amp;<br>
-      <span class="highlight2">Architecture Risk</span>
-    </h1>
-    <p class="hero-subtitle">
-      Practical insights on securing AI systems, cloud-native applications, and enterprise architectures — written by a practitioner from the front lines.
-    </p>
-    <div class="hero-cta">
-      <a href="#blog" class="btn-custom btn-primary-custom">Read Articles</a>
-      <a href="#about" class="btn-custom btn-outline-custom">About the Author</a>
-      <a href="https://www.linkedin.com/in/manohar-pattanayak/" target="_blank" rel="noopener" class="btn-custom btn-linkedin-custom">
-        <i class="bi bi-linkedin"></i> LinkedIn
-      </a>
-      <a href="#" id="downloadResumeBtn" class="btn-custom btn-resume-custom">
-        <i class="bi bi-file-earmark-arrow-down"></i> Download Resume
-      </a>
+<header>
+    <img class="avatar" src="1766671403247.jpg" alt="Manohar Pattanayak">
+    <h1>Securing the Future</h1>
+    <p>My Journey as an AI &amp; Solution Security Architect</p>
+    <div class="badges">
+        <span class="badge">AI Security</span>
+        <span class="badge">Cloud Security</span>
+        <span class="badge">Threat Modeling</span>
+        <span class="badge">App Security</span>
     </div>
-  </div>
-</section>
+</header>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    AI SECURITY ARCHITECTURE &nbsp;///&nbsp; THREAT MODELING &nbsp;///&nbsp; LLM RISK &nbsp;///&nbsp; CLOUD SECURITY &nbsp;///&nbsp; OWASP TOP 10 &nbsp;///&nbsp; PROMPT INJECTION &nbsp;///&nbsp; ISO 42001 &nbsp;///&nbsp; PCI DSS &nbsp;///&nbsp; ZERO TRUST &nbsp;///&nbsp; SAST &amp; DAST &nbsp;///&nbsp; AI SECURITY ARCHITECTURE &nbsp;///&nbsp; THREAT MODELING &nbsp;///&nbsp; LLM RISK &nbsp;///&nbsp; CLOUD SECURITY &nbsp;///&nbsp; OWASP TOP 10 &nbsp;///&nbsp; PROMPT INJECTION &nbsp;///&nbsp; ISO 42001 &nbsp;///&nbsp; PCI DSS &nbsp;///&nbsp; ZERO TRUST &nbsp;///&nbsp; SAST &amp; DAST &nbsp;///&nbsp;
-  </div>
-</div>
+<div class="container">
 
-<!-- BLOG -->
-<section id="blog">
-  <div class="container-custom">
-    <div class="section-label">// Latest Writes</div>
-    <h2 class="section-title">Articles</h2>
-    <div class="posts-grid">
+    <div class="card">
+        <h2><span class="icon">👋</span> Introduction</h2>
+        <p>
+            I am Manohar Pattanayak, an AI &amp; Solution Security Architect specializing
+            in AI Security, Cloud Security, Application Security, Threat Modeling,
+            and Security Architecture Reviews.
+        </p>
+    </div>
 
-      <!-- FEATURED -->
-      <div class="post-card featured" onclick="openArticle('llm')">
-        <div class="featured-content">
-          <span class="post-tag tag-ai">AI Security</span>
-          <div class="post-title">Why Your LLM Is an Attack Surface: A Security Architect's Playbook</div>
-          <div class="post-excerpt">Every enterprise rushing to deploy LLMs is skipping the security architecture conversation. Here's the threat model no one is talking about — and how to actually fix it.</div>
-          <div class="post-meta">
-            <span>Jun 2026</span><span>·</span><span>8 min read</span><span>·</span><span style="color: var(--accent)">Featured</span>
-          </div>
+    <div class="card">
+        <h2><span class="icon">🛡️</span> Areas of Expertise</h2>
+        <ul class="features">
+            <li>AI Security Architecture</li>
+            <li>LLM Security &amp; Prompt Injection</li>
+            <li>Application Security Testing</li>
+            <li>Cloud Security (AWS, Azure, GCP)</li>
+            <li>Threat Modeling</li>
+            <li>API Security</li>
+            <li>ISO 27001 &amp; ISO 42001 Compliance</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">⚠️</span> AI Security Challenges</h2>
+        <p>
+            Modern AI systems introduce unique risks including Prompt Injection,
+            Model Poisoning, Data Leakage, and Governance Challenges.
+            Organizations must adopt security-by-design principles to secure AI
+            throughout its lifecycle.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">🏗️</span> Security by Design</h2>
+        <p>
+            Security should be integrated from the architecture phase rather than
+            treated as a final checklist activity. Key focus areas include:
+        </p>
+        <ul class="features">
+            <li>Threat Modeling</li>
+            <li>Secure Architecture Reviews</li>
+            <li>Cloud Security Assessments</li>
+            <li>Continuous Security Testing</li>
+            <li>Governance &amp; Compliance</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">🚀</span> Future of Cybersecurity</h2>
+        <p>
+            The future lies at the intersection of Artificial Intelligence,
+            Cloud Computing, Secure Architecture, and Governance.
+            Organizations that embed security into every stage of development
+            will innovate faster and more securely.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">📬</span> Connect With Me</h2>
+        <div class="contact-name">Manohar Pattanayak</div>
+        <div class="contact-role">AI &amp; Solution Security Architect</div>
+        <div class="contact-grid">
+            <a href="mailto:manoharpattanayak03@gmail.com">✉️ manoharpattanayak03@gmail.com</a>
+            <a href="https://github.com/manoharbabun" target="_blank" rel="noopener">🐙 github.com/manoharbabun</a>
+            <a href="https://www.linkedin.com/in/manohar-pattanayak/" target="_blank" rel="noopener">💼 linkedin.com/in/manohar-pattanayak</a>
         </div>
-        <div class="featured-visual">🔐</div>
-      </div>
-
-      <!-- CARD 2 -->
-      <div class="post-card" onclick="openArticle('cloud')">
-        <span class="post-tag tag-cloud">Cloud Security</span>
-        <div class="post-title">IAM Is Not Boring: The Misconfiguration That Costs Enterprises Millions</div>
-        <div class="post-excerpt">Most cloud breaches start with an IAM policy nobody reviewed. I'll walk you through the exact patterns I find in AWS, Azure, and GCP assessments.</div>
-        <div class="post-meta"><span>May 2026</span><span>·</span><span>6 min read</span></div>
-      </div>
-
-      <!-- CARD 3 -->
-      <div class="post-card" onclick="openArticle('threat')">
-        <span class="post-tag tag-threat">Threat Modeling</span>
-        <div class="post-title">STRIDE for AI Systems: Threat Modeling When the Model Is the Threat</div>
-        <div class="post-excerpt">Traditional STRIDE works for APIs and services. But what happens when the system can be manipulated through its own input? Here's how I adapt threat modeling for LLMs.</div>
-        <div class="post-meta"><span>Apr 2026</span><span>·</span><span>7 min read</span></div>
-      </div>
-
-      <!-- CARD 4 -->
-      <div class="post-card" onclick="openArticle('appsec')">
-        <span class="post-tag tag-appsec">Application Security</span>
-        <div class="post-title">SAST vs DAST vs Manual Review: What Actually Catches Vulnerabilities</div>
-        <div class="post-excerpt">After testing 20+ applications across BFSI and Fintech, here's what I've learned about which tools catch which bugs — and where all three fail.</div>
-        <div class="post-meta"><span>Mar 2026</span><span>·</span><span>5 min read</span></div>
-      </div>
-
-      <!-- CARD 5 -->
-      <div class="post-card" onclick="openArticle('iso42001')">
-        <span class="post-tag tag-ai">ISO 42001</span>
-        <div class="post-title">ISO 42001 Explained: What AI Governance Actually Requires From Your Team</div>
-        <div class="post-excerpt">ISO 42001 is not just a checkbox. It's the first real framework for AI management systems — and it's going to change how security teams assess AI risk.</div>
-        <div class="post-meta"><span>Feb 2026</span><span>·</span><span>6 min read</span></div>
-      </div>
-
-      <!-- CARD 6 -->
-      <div class="post-card" onclick="openArticle('zerotrust')">
-        <span class="post-tag tag-cloud">Architecture</span>
-        <div class="post-title">Zero Trust in Practice: What It Means When Your Users Are AI Agents</div>
-        <div class="post-excerpt">Zero Trust was designed for humans. Now we have autonomous AI agents making API calls. The perimeter has changed again — here's the architecture that handles it.</div>
-        <div class="post-meta"><span>Jan 2026</span><span>·</span><span>7 min read</span></div>
-      </div>
-
     </div>
-  </div>
-</section>
 
-<!-- ABOUT STRIP -->
-<div class="about-strip" id="about">
-  <div class="about-inner">
-    <div>
-      <div class="about-name">Manohar<br><span>Pattanayak</span></div>
-      <div class="about-role">AI Solution Security Architect</div>
-    </div>
-    <div>
-      <p class="about-text">
-        I'm a Security Architect specializing in AI system security, application architecture reviews, and cloud security across AWS, Azure, and GCP. I've reviewed 15+ enterprise architectures, assessed 20+ applications, and helped BFSI, Fintech, and Healthcare clients achieve 100% audit clearance across ISO 27001, PCI DSS, and SOC 2.
-      </p>
-      <p class="about-text" style="margin-top: 0.75rem;">
-        This blog is where I share what I actually see in the field — not theory, but the real patterns, misconfigurations, and architecture decisions that determine whether a system is secure or not.
-      </p>
-      <div class="tags-row">
-        <span class="skill-tag">AI Security Architecture</span>
-        <span class="skill-tag">LLM Risk</span>
-        <span class="skill-tag">Threat Modeling</span>
-        <span class="skill-tag">SAST / DAST</span>
-        <span class="skill-tag">AWS · Azure · GCP</span>
-        <span class="skill-tag">ISO 27001</span>
-        <span class="skill-tag">ISO 42001</span>
-        <span class="skill-tag">PCI DSS</span>
-        <span class="skill-tag">OWASP Top 10</span>
-        <span class="skill-tag">Zero Trust</span>
-      </div>
-    </div>
-  </div>
 </div>
 
-<!-- CONNECT SECTION -->
-<div class="connect-section">
-  <div class="connect-inner">
-    <div class="connect-text">
-      <h3>Let's Connect</h3>
-      <p>Open to security architecture consulting, advisory roles, and speaking opportunities.</p>
-    </div>
-    <div class="connect-actions">
-      <a href="https://www.linkedin.com/in/manohar-pattanayak/" target="_blank" rel="noopener" class="btn-custom btn-linkedin-custom">
-        <i class="bi bi-linkedin"></i> Connect on LinkedIn
-      </a>
-      <a href="mailto:manoharpattanayak03@gmail.com" class="btn-custom btn-outline-custom">
-        <i class="bi bi-envelope"></i> Send Email
-      </a>
-      <a href="#" id="downloadResumeBtn2" class="btn-custom btn-resume-custom">
-        <i class="bi bi-file-earmark-pdf"></i> Download Resume
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <span>© 2026 Manohar Pattanayak</span>
-  <span class="footer-social">
-    <a href="mailto:manoharpattanayak03@gmail.com">Email</a>
-    <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/manohar-pattanayak/" target="_blank" rel="noopener" class="footer-linkedin">
-      <i class="bi bi-linkedin"></i> LinkedIn
-    </a>
-  </span>
+    © 2026 Manohar Pattanayak | <span>AI Security</span> • <span>Cloud Security</span> • <span>Application Security</span>
 </footer>
 
-<!-- ARTICLE OVERLAY -->
-<div class="article-overlay" id="articleOverlay" onclick="handleOverlayClick(event)">
-  <div class="article-inner" id="articleInner">
-    <button class="article-close" onclick="closeArticle()">✕ CLOSE</button>
-    <div id="articleContent"></div>
-  </div>
-</div>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-// ── Resume Download (embedded PDF) ──
-const RESUME_B64 = "JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUgo+PgplbmRvYmoKMiAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjEgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iagozIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhLUJvbGQgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YyIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNCAwIG9iago8PAovQ29udGVudHMgOCAwIFIgL01lZGlhQm94IFsgMCAwIDYxMiA3OTIgXSAvUGFyZW50IDcgMCBSIC9SZXNvdXJjZXMgPDwKL0ZvbnQgMSAwIFIgL1Byb2NTZXQgWyAvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJIF0KPj4gL1JvdGF0ZSAwIC9UcmFucyA8PAoKPj4gCiAgL1R5cGUgL1BhZ2UKPj4KZW5kb2JqCjUgMCBvYmoKPDwKL1BhZ2VNb2RlIC9Vc2VOb25lIC9QYWdlcyA3IDAgUiAvVHlwZSAvQ2F0YWxvZwo+PgplbmRvYmoKNiAwIG9iago8PAovQXV0aG9yIChcKGFub255bW91c1wpKSAvQ3JlYXRpb25EYXRlIChEOjIwMjYwNTMxMTkyMzIwKzAwJzAwJykgL0NyZWF0b3IgKFwodW5zcGVjaWZpZWRcKSkgL0tleXdvcmRzICgpIC9Nb2REYXRlIChEOjIwMjYwNTMxMTkyMzIwKzAwJzAwJykgL1Byb2R1Y2VyIChSZXBvcnRMYWIgUERGIExpYnJhcnkgLSBcKG9wZW5zb3VyY2VcKSkgCiAgL1N1YmplY3QgKFwodW5zcGVjaWZpZWRcKSkgL1RpdGxlIChcKGFub255bW91c1wpKSAvVHJhcHBlZCAvRmFsc2UKPj4KZW5kb2JqCjcgMCBvYmoKPDwKL0NvdW50IDEgL0tpZHMgWyA0IDAgUiBdIC9UeXBlIC9QYWdlcwo+PgplbmRvYmoKOCAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAyNzk2Cj4+CnN0cmVhbQpHYXUwRT5CZWRsJnE5U1lXMGBxNENiVjBuNFxtUzxpZkYyMVouUFcnRjhYSVApVVQ0KD1DKDlUUDk3UEhbaCZmajpyWnInKiJZR0I/Kzk6J1deXD9GSiVCczZJQTMyaz8lOj9xMmVdb0peIm1NUkhwWFYoYFclUl9jJy5OXGUiQyRKZSpMTkVtVkQqOmpCYzVuXjZSOURcSVY3OWtvRChMMEJNRVI8alAkU0ZuI0BiVSEnRVxzNyItWFVtWDY4UytsJnBjLzdDKnIoaWRdSzxGcD9gO1tPM21uYTgsMzNAaFxsc3M7YGU4SnI2a1hsO2RnWEhHPCg/ViFjY3E+I2EjJVZeOE5DOichMVU8PmtpSEBRRjhOcjZucyVZcDc5VigvUEYxKFJsYzFdYFdsbVFhb2AhaWRKMkRiNC5rK0xIYUVdXFhhS00qKV89SF1uPVhrPU1tb2hYMVBfSkBsISVtQWVcRlIkO1w3XiZrLj1wSSFgV1cxMTFLPnJIZShkOl9gbjpgc2EhMS5tUnEzNCddWGs7TzFnNUtvRkRzQV5wa2EmPDNtdXVIMl1TXjVrIUdAUCg3VHVwNiZRPzFecmNRMSlfI3Awal9kaFgwLCZldXNiO2xoVDBnPE9fI1U5S0I4ZCNIRSxGMztINisyYTM8SWgkXW4tNi81YV9lYFBHVWNsYywpMj1mQTdLKGwnWk1sYEknZ20mcUMjcS45QmomSk4+UWI2NktmKHE/RiRxQGAxKDs+XDFPJ3FeLU1pNWE9TjNpZ1BZOFItczkkMC0wMGdrcEwkP3VYJUhoI2g6ZFAmTTBxcV9WcCRSMWMjYmZCWVNxJiQ7bzdXcEdKZFE+KE9AP09TVFtgc25mMEsiWV9lc0ZAUTQvMEQiS1wuaCUqInUzdUhsZ1s2cThqWVBAXFtBdWl0YU1hMVNDZUJxS05KanBlYVBxbE9WPlhrISEpKE1HPlJmcG8vVSEiVCdSIVFQOjY7SWR1Jl0rN00jNS5faVEyODNjQlhpTlI7N3NlbiMrSE5ITk5LJ1BVUGpVYjNkYFQrR2AqJ24+dG9UZy5QbGJlJTRXbUFCMVFZXEJbLFxuZiUhZDpLUDlrJFI4UGRvSyFANF1udGMjKyJOTk8lJUVKTyJhX01gQWZ1bVpkPm1oODc9Nj1lPzFsVjNmaTMranU/LGtbbVRzJSlJIzVybWwqczQ6LWYoRjkiNGhZV21FOkJdK1g8aG4oLzRIaVxgNDBVdShTU0NpL0U1I0pZNDRxc0xWWjxlXmdNb0ZCMkY5VDkrRCpaIiRcJ0xLLDUsUkpeYnNKIUNFXjlDQ1xZTl0sP1tGND9lLjolL1g3KVBvLEJaOygqRyxtbExpInJEYG5bcSVFZ286RElaLCludGVpTz9CPk9RR0ojKlI/aCtAWV81PCJHW1dNaSxpVUolRzNfbyUuO3FkaSU6Y0Ivb09fYiVjLUNabmY1XFwrPXNuSnNCMWtLR05dSSoqV0dYP3VPN0hWMGRfTTBvT25PZFpCZ3AxYy1XKj0sb2goQF9kQiRqMSZFLzNcZUJfTFsyKzFKVWpHWC1KVkgzLE9PbUtqP0FUUCwyZUBFaWZyc2NNXzpnSzw7UjRoIjVMZmcwOGtta20tKSYxUGIoVG5LVClDLSw5XVNFUXBWLGNDcVp0T2gkMTw1X1Y5OiI0Iy0nTl1YTSxcTSgwc1RGOVItKVxXIlFNZFFdcjBSZUpzRip1IyxiQDtZRTgtLztqUzcxP3NmVEMiTyc2QURzQmJbTzEvMUJEUmdSQCxpTFFqO2dUdE5ROUl0JEZPT0poLUY0ZXEqOjpUIy89IitIaCVcUzxGTDNlOkcsOyEoSlI4NGlpNFctPSk2dVFqPGxUOlE2V0k+aG1hdVhOOXFgSEpcR1RHTltibEsiMzNBLyFoKitCPicmPV1dQ04/VjxmNW1YLW9HLUw5YSc+cTdvTUEiL2UhYDVaPGtYcy4+cXBWTlFiMS9eaFU9ISk8ZHNQVUJBcjYlWUJyLCRuOnRgJk9KKzBRPk9wKjVsMzA6Wk84cXVGR1NAVl5KXzEkSCtjdDkrWDZPUTY7c1EzNkYxLj4wYj0yKU0zaF5mSWtvRWFQWEVMYTUmVmsrR09MP25MP0FfbT1jNWQldThzP25bbVsxNVErL3JiZixGLFteRGpra0s8JUhISlE5JT5WYjAqJk1rLGJpXDVYblB1b0VOUXBBJUsnRTtRWV9KLGFuPV9kcy5Ca21JPWReRENTVVtpTmhAbjA5L1hbK0gnQVNZRFFtOlUxS1E7Y0IyRG1ON09ZS0tfJkRyclFVal41a2EqV1xmS2koQXNraD0pInUrSClRZT5ePW01XkpnWUJpPitVUWxEJCUmZjxdMS4/cHBNW2lKT2NPJV9vQipnKzljTnAwb2VcUz5QN09OR1ZINUw1Sj01RnNlLGFELDBNWFcoTUA+XyI7RlhTOkVPUUFUQ2hPYEFUI1tHP1hBcj8zRVZLb0ZKPGFyP2kjTG0zISgodTRbKldnYVNfazRCbFRTUmZuTDAnOT0udFUkLCdCPWQvb202ak9Ccy1sYmk6cmEiVjhfWkAqT2I/a3EwI2NhcnItZXJuNj5Ma0wiNmRlXURhZ3AjZWVuVVlqQy9dR11JXU1tRGxAV1A0XGQmPGcyMmI+TmRNRDIkQylTQzY+VGUrQU1CUEh0U1YmNSstQmclW1AqOT5UVGJWb2gqbF5oJTg3Q2x0JSM+bG5YTzpiX1RScTNJdFthcj5WOEJFUiUoWnNgVE5sO01EJk9lLD1KVFVSNUhZJWs4ZGtqIXRRJ2xQJWFZMjVZLkYzT0hFV28/KUg/LkdQRTkhZFY/PGdSY04mcXNYc1VTUTtbPEI4c1RcY29kXGQ2Vm4jUDRHOHFcUnMhST10SXQ8YUMubjxTTUtGST1HSFcoOVxoIUAvOTI+Y28lXVxzTWVsLUoyPzNmSysuPlwvWGFBMj4taHRPU0QqNDY5WV8vV2xJWmJaQl4vZ0BaSChhYGw8JSFiaXMiZlItQSJIRjtQaChPOj9nYUtiUnNRTmxFYTZvKTZHSmEqY0FadCYxSzJoM2hKRWQ5KURvZDtuUypJJ1JrPGdYLEBCYlsxPGIoQl9rLlJBXXI2LlUmQ2RfKDVmR3VtQDx1cV8uI25galtRbjZsciglYCgrZnQxRGtpJ1JgL1spRlc7ZyNsW0RwU0VkMTAkVWtTLjJIPVRzNlVwQ2pzU0dER2YkPDc9I2BoOSduJjhSKjVIXjtjZ1o3XkllJS9hISNKQ1ZhPysqS3E7T1VbTElBKWQkOE9dRmliak0sTmEoIy10MSptREhOW0VoSklHbU1QTURWQT4/R0VtWiZeITIjYS9uK29uTDI3cW9pLlA3XWRBbmJeVlkmI3AoJnBpXFhuIkg1JnMpYVghU2dLS1Y9LmRzZWdhclpdUW5YQi9XN3VMOFZIQD1FR0ZyKnBJT2xtSEtjZHAzOScjOC9SX0BXXigtT21YcW5hXnVNSyhMUXJSJW1fU0A/Ul1tWS5rRmg/X2xULG1EIkQ8SS9JcWosSlcoJHMhLmJYcUoiS2w6Rzk/S1ZFKmk1O1o4OixvIlliSiMmbFpMRThbV1tjOmsiS2BIW2YxJEFlSDRia3NgMysyIW9pJUM2dGEqN1MkYiw5NFJba3VQNzw7Sm0lbFRhTz1CTixhKnRkLkJXVC1XSCUpRlJhaF5tdGUxfj5lbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA5CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDA2MSAwMDAwMCBuIAowMDAwMDAwMTAyIDAwMDAwIG4gCjAwMDAwMDAyMDkgMDAwMDAgbiAKMDAwMDAwMDMyMSAwMDAwMCBuIAowMDAwMDAwNTE0IDAwMDAwIG4gCjAwMDAwMDA1ODIgMDAwMDAgbiAKMDAwMDAwMDg2MiAwMDAwMCBuIAowMDAwMDAwOTIxIDAwMDAwIG4gCnRyYWlsZXIKPDwKL0lEIApbPDE3YTY4NmY4MTJkZDc2NGY2ZDk3OWJhYTFmMmYxYTBmPjwxN2E2ODZmODEyZGQ3NjRmNmQ5NzliYWExZjJmMWEwZj5dCiUgUmVwb3J0TGFiIGdlbmVyYXRlZCBQREYgZG9jdW1lbnQgLS0gZGlnZXN0IChvcGVuc291cmNlKQoKL0luZm8gNiAwIFIKL1Jvb3QgNSAwIFIKL1NpemUgOQo+PgpzdGFydHhyZWYKMzgwOAolJUVPRgo=";
-
-function downloadResume() {
-  const link = document.createElement('a');
-  link.href = 'data:application/pdf;base64,' + RESUME_B64;
-  link.download = 'Manohar_Pattanayak_Resume.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-
-document.getElementById('downloadResumeBtn').addEventListener('click', function(e) {
-  e.preventDefault(); downloadResume();
-});
-document.getElementById('downloadResumeBtn2').addEventListener('click', function(e) {
-  e.preventDefault(); downloadResume();
-});
-
-// ── Articles ──
-const articles = {
-  llm: {
-    tag: '<span class="post-tag tag-ai">AI Security</span>',
-    title: "Why Your LLM Is an Attack Surface: A Security Architect's Playbook",
-    meta: "June 2026 · 8 min read · Manohar Pattanayak",
-    body: `
-      <p>Every week I review another enterprise architecture where a team has plugged an LLM into their product and called it a feature. Rarely has anyone asked the question that actually matters: <strong>what happens when someone attacks this model?</strong></p>
-      <h2>The Problem With LLM Security Today</h2>
-      <p>Traditional application security has a defined surface area. You have endpoints, inputs, auth boundaries. You can map it, test it, and monitor it. LLMs break all of that. The attack surface isn't a URL — it's every sentence a user can type.</p>
-      <div class="callout"><strong>Key insight:</strong> An LLM with tool access (database queries, API calls, email sending) is not just a chatbot. It's an autonomous execution engine. And most teams are deploying it without a threat model.</div>
-      <h2>The Threat Model I Use</h2>
-      <h3>1. Prompt Injection</h3>
-      <p>The OWASP Top 10 for LLMs puts prompt injection at number one for a reason. An attacker crafts input that overrides the system prompt, changes the model's behavior, or extracts internal instructions. I've found this in production systems in fintech and healthcare — environments where it matters most.</p>
-      <h3>2. Indirect Prompt Injection</h3>
-      <p>More dangerous than direct injection. The attacker doesn't talk to your model — they inject malicious instructions into documents, emails, or web pages that your model will later process. If your LLM reads user-submitted files or browses URLs, you have this risk right now.</p>
-      <h3>3. Training Data Poisoning</h3>
-      <p>If your model is fine-tuned on internal data, who controls what goes into that data? I've seen organizations where any team member can contribute to the training corpus. That's a supply chain risk for your model.</p>
-      <h3>4. Model Denial of Service</h3>
-      <p>LLMs are computationally expensive. A flood of complex, context-heavy prompts can degrade performance significantly. Rate limiting alone isn't enough — you need prompt complexity analysis at the gateway layer.</p>
-      <h2>Architecture Controls That Actually Work</h2>
-      <ul>
-        <li><strong>Input validation layer</strong> — sanitize and classify inputs before they reach the model</li>
-        <li><strong>Output filtering</strong> — parse model responses before returning them to the user or triggering downstream actions</li>
-        <li><strong>Tool call authorization</strong> — every tool the model can invoke needs its own auth check, not inherited trust</li>
-        <li><strong>Context isolation</strong> — user contexts must not bleed into each other in multi-tenant systems</li>
-        <li><strong>Audit logging at the prompt level</strong> — not just API calls, but the actual model inputs and outputs</li>
-      </ul>
-      <div class="callout"><strong>Bottom line:</strong> LLM security isn't a feature you add. It's an architecture discipline. Threat model your AI systems the same way you threat model your APIs — or accept the consequences.</div>
-    `
-  },
-  cloud: {
-    tag: '<span class="post-tag tag-cloud">Cloud Security</span>',
-    title: "IAM Is Not Boring: The Misconfiguration That Costs Enterprises Millions",
-    meta: "May 2026 · 6 min read · Manohar Pattanayak",
-    body: `
-      <p>I've reviewed cloud environments across AWS, Azure, and GCP for enterprises in banking, fintech, and healthcare. If there's one consistent finding across all of them, it's this: <strong>IAM is almost always wrong.</strong></p>
-      <h2>Why IAM Goes Wrong</h2>
-      <p>It usually starts with good intentions. A developer needs access to get something done quickly. A service account is created with broad permissions. The sprint ends. The permission stays. Multiply that by 50 developers over 3 years and you have an IAM policy that nobody fully understands.</p>
-      <div class="callout"><strong>Statistic from my assessments:</strong> In 30+ cloud architecture reviews, misconfigured IAM was the most common finding — appearing in over 80% of engagements across all three major providers.</div>
-      <h2>The Patterns I See Most Often</h2>
-      <h3>AWS: Wildcard Policies</h3>
-      <p>The <code>"Action": "*"</code> or <code>"Resource": "*"</code> pattern is everywhere. It's often in policies attached to Lambda functions, EC2 instance roles, or service accounts that "just need to work." Every wildcard is an open door.</p>
-      <h3>Azure: Over-Privileged Managed Identities</h3>
-      <p>Managed identities are a great security feature — when scoped correctly. What I consistently find is system-assigned identities with Contributor or Owner roles at the subscription level. That's effectively a skeleton key for your Azure environment.</p>
-      <h3>GCP: Primitive Roles in Production</h3>
-      <p>GCP's primitive roles (Owner, Editor, Viewer) are legacy constructs that Google themselves recommend against. But they're still being used in production workloads because they're the easiest option when you're moving fast.</p>
-      <h2>The Fix: Least Privilege, Enforced by Architecture</h2>
-      <ul>
-        <li>Audit all IAM policies quarterly — automated via AWS IAM Access Analyzer, Azure AD Access Reviews, or GCP Policy Analyzer</li>
-        <li>Enforce permission boundaries on every IAM role in AWS</li>
-        <li>Use conditional access policies in Azure based on context, not just identity</li>
-        <li>Replace primitive GCP roles with predefined or custom roles scoped to specific resources</li>
-        <li>Delete all service accounts and keys older than 90 days with no recent activity</li>
-      </ul>
-      <div class="callout"><strong>The core principle:</strong> IAM should be an architecture decision, not an operational convenience.</div>
-    `
-  },
-  threat: {
-    tag: '<span class="post-tag tag-threat">Threat Modeling</span>',
-    title: "STRIDE for AI Systems: Threat Modeling When the Model Is the Threat",
-    meta: "April 2026 · 7 min read · Manohar Pattanayak",
-    body: `
-      <p>STRIDE has been the threat modeling framework of choice for application security teams for over two decades. But AI changes the equation in ways that STRIDE wasn't designed for.</p>
-      <h2>Where STRIDE Breaks for AI</h2>
-      <p>In a traditional system, you trust the code because you wrote it. The logic is deterministic. An LLM is probabilistic — its output depends on its training data, fine-tuning, and the exact input it receives. That means the system itself can behave as a threat vector.</p>
-      <div class="callout"><strong>The key difference:</strong> In traditional systems, you protect the system from external threats. In AI systems, the system can be turned <em>into</em> a threat by manipulating its inputs.</div>
-      <h2>How I Adapt STRIDE for LLMs</h2>
-      <h3>Spoofing → Identity Manipulation</h3>
-      <p>Can an attacker make the model behave as a different persona? System prompt injection attacks do exactly this.</p>
-      <h3>Tampering → Training Data Poisoning</h3>
-      <p>If the model learns from user interactions or external data sources, an attacker can poison the training pipeline.</p>
-      <h3>Information Disclosure → Context Leakage</h3>
-      <p>LLMs can be manipulated into revealing their system prompts, other users' conversation history, or internal data they were given access to.</p>
-      <h3>Elevation of Privilege → Tool Abuse</h3>
-      <p>When an LLM has tool access, prompt injection can escalate what it does. A model allowed to read a database can be prompted into writing to it.</p>
-      <h2>Practical Steps</h2>
-      <ul>
-        <li>Map every data flow into and out of the model — treat it like an API endpoint</li>
-        <li>Enumerate all tools the model can invoke and apply least-privilege to each</li>
-        <li>Test system prompt extraction with adversarial inputs before deployment</li>
-        <li>Apply STRIDE to the model's output side, not just its inputs</li>
-        <li>Require human-in-the-loop for any model action that writes, deletes, or sends data</li>
-      </ul>
-      <div class="callout"><strong>Takeaway:</strong> STRIDE still works — but you have to apply it to the model's behavior, not just the system around it.</div>
-    `
-  },
-  appsec: {
-    tag: '<span class="post-tag tag-appsec">Application Security</span>',
-    title: "SAST vs DAST vs Manual Review: What Actually Catches Vulnerabilities",
-    meta: "March 2026 · 5 min read · Manohar Pattanayak",
-    body: `
-      <p>After running security assessments across 20+ applications in BFSI and fintech, I have a clear picture of what each testing method actually catches — and where each one fails.</p>
-      <h2>SAST: Fast, Noisy, Necessary</h2>
-      <p>Static Application Security Testing analyzes source code without executing it. It's fast, integrates into CI/CD, and catches a class of bugs that are hard to find any other way. The problem is noise — false positive rates run between 40-70% in every SAST deployment I've reviewed.</p>
-      <h3>What SAST catches well</h3>
-      <ul>
-        <li>Hardcoded credentials and API keys</li>
-        <li>SQL injection patterns in ORM misuse</li>
-        <li>Insecure deserialization patterns</li>
-        <li>Dangerous cryptographic function usage</li>
-      </ul>
-      <h2>DAST: Real Behavior, Limited Coverage</h2>
-      <p>Dynamic testing runs against a live application and finds what actually works. It's the closest automated equivalent to what a real attacker does. The limitation is coverage — authenticated flows, complex multi-step workflows, and APIs without proper documentation are largely invisible to DAST scanners.</p>
-      <div class="callout"><strong>Finding from assessments:</strong> DAST consistently misses business logic flaws — which are often the highest-impact vulnerabilities in fintech applications.</div>
-      <h2>Manual Review: Catches What Nothing Else Does</h2>
-      <p>Business logic flaws. Authentication flow bypasses. Authorization gaps between microservices. Race conditions. These require a human who understands the application's intent — and can think like an attacker.</p>
-      <h2>The Answer: All Three, in the Right Ratio</h2>
-      <ul>
-        <li>SAST in CI/CD — catch code-level issues before they deploy</li>
-        <li>DAST in staging — validate that the running application behaves securely</li>
-        <li>Manual review annually or before major releases — catch the business logic issues automation misses</li>
-      </ul>
-      <div class="callout"><strong>Bottom line:</strong> No single tool covers the full attack surface. The teams that catch the most vulnerabilities use all three.</div>
-    `
-  },
-  iso42001: {
-    tag: '<span class="post-tag tag-ai">ISO 42001</span>',
-    title: "ISO 42001 Explained: What AI Governance Actually Requires From Your Team",
-    meta: "February 2026 · 6 min read · Manohar Pattanayak",
-    body: `
-      <p>ISO 42001 is the first international standard specifically for AI Management Systems. Published in 2023, it provides a framework for organizations to manage AI responsibly — covering risk, governance, and accountability across the AI lifecycle.</p>
-      <h2>What ISO 42001 Actually Covers</h2>
-      <h3>AI Risk Management</h3>
-      <p>The standard requires organizations to identify, assess, and treat AI-specific risks — not just traditional information security risks. This includes risks from training data quality and risks from model behavior in production.</p>
-      <h3>AI System Objectives and Controls</h3>
-      <p>Similar to ISO 27001's Annex A, ISO 42001 includes AI-specific controls covering data governance, impact assessments for high-risk AI applications, and transparency requirements.</p>
-      <h3>Responsible Use Policies</h3>
-      <p>Organizations must define what AI can and cannot be used for in their context — an operational policy that security teams need to enforce technically.</p>
-      <div class="callout"><strong>Key difference from ISO 27001:</strong> ISO 27001 focuses on protecting information. ISO 42001 focuses on ensuring that AI systems behave as intended and that their risks — including risks to people affected by AI decisions — are managed.</div>
-      <h2>What This Means for Security Architects</h2>
-      <ul>
-        <li>AI risk assessments need to be part of the architecture review process, not an afterthought</li>
-        <li>Model governance needs to be designed into the system from the start</li>
-        <li>Audit trails for AI decisions become a compliance requirement</li>
-        <li>Third-party AI services need to be assessed as part of vendor risk management</li>
-      </ul>
-      <div class="callout"><strong>Practical first step:</strong> Run an AI impact assessment on your highest-risk AI application. Map the data inputs, the model behavior, the output actions, and who is affected by those outputs.</div>
-    `
-  },
-  zerotrust: {
-    tag: '<span class="post-tag tag-cloud">Architecture</span>',
-    title: "Zero Trust in Practice: What It Means When Your Users Are AI Agents",
-    meta: "January 2026 · 7 min read · Manohar Pattanayak",
-    body: `
-      <p>Zero Trust was built on a simple premise: never trust, always verify. It was designed for humans. Now we have AI agents making API calls, reading emails, writing to databases, and triggering workflows. The same premise applies — but the implementation is entirely different.</p>
-      <h2>Why AI Agents Break Traditional Zero Trust</h2>
-      <p>In a human Zero Trust model, identity is relatively stable. AI agents are different — they may act on behalf of multiple users simultaneously. Their behavior varies based on inputs. They can be manipulated through prompt injection to act outside their intended scope.</p>
-      <div class="callout"><strong>The core problem:</strong> A Zero Trust policy that says "this service account can call this API" doesn't account for the fact that an AI agent's behavior can be changed by an attacker through its inputs.</div>
-      <h2>The Architecture Principles I Apply</h2>
-      <h3>Agent Identity Must Be Separate From User Identity</h3>
-      <p>An AI agent acting on behalf of a user should not inherit that user's permissions. It should have its own identity with a minimal permission set scoped to the specific task.</p>
-      <h3>Every Tool Call Is an Authorization Decision</h3>
-      <p>When an AI agent calls a tool, that call should go through the same authorization check as a human request. The fact that "the AI decided to do it" is not authorization.</p>
-      <h3>Assume the Agent Can Be Manipulated</h3>
-      <p>Design your access controls assuming that the agent will at some point receive malicious inputs. This means defense in depth at the tool layer: rate limiting, output validation, anomaly detection.</p>
-      <h3>Human-in-the-Loop for High-Stakes Actions</h3>
-      <p>Any action that is irreversible, high-value, or high-risk should require human confirmation. Deleting records, initiating payments, sending external communications — these should not be fully autonomous.</p>
-      <h2>Practical Implementation</h2>
-      <ul>
-        <li>Create dedicated service identities for AI agents — never use shared or user-inherited credentials</li>
-        <li>Implement a tool authorization layer between the agent and the tools it can call</li>
-        <li>Log every tool call with the full agent context</li>
-        <li>Apply behavioral anomaly detection to agent activity</li>
-        <li>Treat prompt injection as an authorization bypass attempt</li>
-      </ul>
-      <div class="callout"><strong>Zero Trust for AI:</strong> The principle is the same — never trust, always verify. For AI agents, "verify" has to happen at the behavior level, not just the identity level.</div>
-    `
-  }
-};
-
-function openArticle(id) {
-  const a = articles[id];
-  if (!a) return;
-  document.getElementById('articleContent').innerHTML = `
-    <div class="article-tag">${a.tag}</div>
-    <div class="article-title">${a.title}</div>
-    <div class="article-meta">${a.meta}</div>
-    <div class="article-body">${a.body}</div>
-  `;
-  const overlay = document.getElementById('articleOverlay');
-  overlay.classList.add('open');
-  overlay.scrollTop = 0;
-  document.body.style.overflow = 'hidden';
-}
-
-function closeArticle() {
-  document.getElementById('articleOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('articleOverlay')) closeArticle();
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeArticle(); });
-</script>
 </body>
 </html>
